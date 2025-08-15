@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "authloginui",
+  "version": "${version}",
+  "name": "AuthLoginUI",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "unlicense",
+  "icon": "assets/authloginui/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "cn.carljoy.authloginui.client.AuthloginuiClient"
+    ],
+    "main": [
+      "cn.carljoy.authloginui.Authloginui"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
