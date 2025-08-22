@@ -23,12 +23,9 @@ public class OwoLoginScreen extends BaseOwoScreen<FlowLayout> {
     
     @Override
     protected void build(FlowLayout rootComponent) {
-        // 设置Minecraft风格的背景
-        rootComponent.surface(Surface.flat(0xFF2F2F2F)); // 深灰色背景，更贴合MC风格
-        
         // 创建居中的主容器
         FlowLayout centerContainer = Containers.verticalFlow(Sizing.content(), Sizing.content());
-        centerContainer.surface(Surface.flat(0xC0000000).and(Surface.outline(0xFF8B8B8B))); // 半透明黑色背景加灰色边框
+        centerContainer.surface(Surface.DARK_PANEL);
         centerContainer.padding(Insets.of(35));
         centerContainer.positioning(Positioning.relative(50, 50)); // 居中定位
         centerContainer.margins(Insets.of(15)); // 添加外边距
