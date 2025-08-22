@@ -17,6 +17,9 @@
       "cn.carljoy.authloginui.Authloginui"
     ]
   },
+  "mixins": [
+    "authloginui.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",

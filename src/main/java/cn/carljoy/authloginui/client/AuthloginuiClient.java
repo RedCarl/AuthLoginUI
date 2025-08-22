@@ -9,8 +9,8 @@ import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.minecraft.client.MinecraftClient;
-import cn.carljoy.authloginui.client.gui.LoginScreen;
-import cn.carljoy.authloginui.client.gui.RegisterScreen;
+import cn.carljoy.authloginui.client.gui.OwoLoginScreen;
+import cn.carljoy.authloginui.client.gui.OwoRegisterScreen;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -123,38 +123,44 @@ public class AuthloginuiClient implements ClientModInitializer {
             case "LOGIN_GUI":
                 System.out.println("[AuthLoginUI] 显示登录界面");
                 // 检查当前是否已经是登录界面，避免重复打开
-                if (!(client.currentScreen instanceof LoginScreen)) {
-                    client.setScreen(new LoginScreen());
+                if (!(client.currentScreen instanceof OwoLoginScreen)) {
+                    client.setScreen(new OwoLoginScreen());
                 }
                 break;
             case "REGISTER_GUI":
                 System.out.println("[AuthLoginUI] 显示注册界面");
                 // 检查当前是否已经是注册界面，避免重复打开
-                if (!(client.currentScreen instanceof RegisterScreen)) {
-                    client.setScreen(new RegisterScreen());
+                if (!(client.currentScreen instanceof OwoRegisterScreen)) {
+                    client.setScreen(new OwoRegisterScreen());
                 }
                 break;
             case "LOGIN_SUCCESS":
                 System.out.println("[AuthLoginUI] 登录成功");
                 // 关闭当前GUI
-                if (client.currentScreen instanceof LoginScreen) {
+                if (client.currentScreen instanceof OwoLoginScreen) {
                     client.setScreen(null);
                 }
                 break;
             case "LOGIN_ERROR":
                 System.out.println("[AuthLoginUI] 登录失败");
-                // 可以在这里添加错误提示，但保持GUI打开
+                // 显示错误提示，但保持GUI打开
+                if (client.currentScreen instanceof OwoLoginScreen owoLoginScreen) {
+                    owoLoginScreen.setErrorMessage("登录失败，请检查密码");
+                }
                 break;
             case "REGISTER_SUCCESS":
                 System.out.println("[AuthLoginUI] 注册成功");
                 // 关闭当前GUI
-                if (client.currentScreen instanceof RegisterScreen) {
+                if (client.currentScreen instanceof OwoRegisterScreen ) {
                     client.setScreen(null);
                 }
                 break;
             case "REGISTER_ERROR":
                 System.out.println("[AuthLoginUI] 注册失败");
-                // 可以在这里添加错误提示，但保持GUI打开
+                // 显示错误提示，但保持GUI打开
+                if (client.currentScreen instanceof OwoRegisterScreen owoRegisterScreen) {
+                    owoRegisterScreen.setErrorMessage("注册失败，请重试");
+                }
                 break;
             case "auth_required":
                 System.out.println("[AuthLoginUI] 服务器要求进行身份验证");

@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "cn.carljoy.authloginui.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "authloginui.refmap.json",
+  "mixins": [],
+  "client": [
+    "ChatHudMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
